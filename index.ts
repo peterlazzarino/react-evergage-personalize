@@ -1,5 +1,5 @@
-import EvergagePersonalize from "./components/EvergagePersonalize";
-import { PersonalizeTypes } from "./components/PersonalizeTypes";
+import EvergagePersonalize from "./src/EvergagePersonalize";
+import { PersonalizeTypes } from "./src/PersonalizeTypes";
 
 export {
     PersonalizeTypes
