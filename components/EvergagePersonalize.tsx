@@ -63,7 +63,7 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
         const campaignMatch = campaigns.campaignResponses.find((x) => x.campaignName === campaign);
         if(campaignMatch) {
             this.setState({
-                personalizationData: this.mapPropertiesByType(campaignMatch.messages, type),
+                personalizationData: this.mapPropertiesByType(type, campaignMatch.messages),
             });
         }
     }
