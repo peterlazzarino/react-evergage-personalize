@@ -53,8 +53,8 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
         switch (type) {
             case PersonalizeTypes.Product:
                 return {
-                    items: [].concat.apply([],messages.map((x) => x["promotedItems"])),
-                    keys: [].concat.apply([],messages.map((x) => x["promotedItemKeys"])),
+                    items: [].concat.apply([], messages.map((x) => x["promotedItems"])),
+                    keys: [].concat.apply([], messages.map((x) => x["promotedItemKeys"])),
                 };
         }
     }
