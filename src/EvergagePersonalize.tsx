@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import { PersonalizeTypes } from "./PersonalizeTypes";
+import { subscribeToCampaign } from "evergage-datalayer";
 
 const canUseDOM = typeof window !== "undefined";
 
@@ -33,7 +34,7 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
         if(!canUseDOM || !Evergage) {
             return;
         }
-        Evergage.addCampaignResponseListener(this.campaignListener);
+        subscribeToCampaign(this.campaignListener, this.props.campaign);
     }
     public render () {
         const { render: renderFn, children: child } = this.props;
@@ -58,13 +59,10 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
                 };
         }
     }
-    private campaignListener (campaigns) {
-        const { campaign, type } = this.props;
-        const campaignMatch = campaigns.campaignResponses.find((x) => x.campaignName === campaign);
-        if(campaignMatch) {
-            this.setState({
-                personalizationData: this.mapPropertiesByType(type, campaignMatch.messages),
-            });
-        }
+    private campaignListener (campaign) {
+        const { type } = this.props;
+        this.setState({
+            personalizationData: this.mapPropertiesByType(type, campaign.messages),
+        });    
     }
 }

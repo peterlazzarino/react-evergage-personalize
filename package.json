@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/peterlazzarino/react-evergage-personalize#readme",
   "dependencies": {
+    "evergage-datalayer": "^1.0.1",
     "prop-types": "15.6.0",
     "react": "16.0.0"
   },
