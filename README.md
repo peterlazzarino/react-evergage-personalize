@@ -18,7 +18,7 @@ $ npm install --save react-evergage-personalize
 
 Set up your campaign in evergage with message that uses item blocks backed by a recommendation recipe.
 
-Basic usage - 
+### Basic usage - 
 
 ```javascript
 
@@ -26,25 +26,48 @@ Basic usage -
 
     //PersonalizeTypes.Product (Product level recommendations) is the only recommendation type available right now 
 
-    <EvergagePersonalize type={PersonalizeTypes.Product} campaign="homepage_recommendations" render={({keys, items}) => {
+    export const PersonalizedContent = () => {
+        return (  
+            <EvergagePersonalize type={PersonalizeTypes.Product} campaign="homepage_recommendations" render={({keys, items}) => {
 
-        //keys are the unique identifiers of the recommended products
-        //items are the items themselves. Available data will be based on what the item block you have chosen pulls in. The more data it gets the more you get.
+                //keys are the unique identifiers of the recommended products
+                //items are the items themselves. Available data will be based on what the item block you have chosen pulls in. The more data it gets the more you get.
 
-        return (
-            <div>
-                {items.map((item) => {
-                    return (
-                        <div>
-                            {item._id}
-                            This is {item.name}
-                            See it at {item.url}
-                        </div>
-                    )
-                })}
-            </div>
+                return (
+                    <div>
+                        {items.map((item) => {
+                            return (
+                                <div>
+                                    {item._id}
+                                    This is {item.name}
+                                    See it at {item.url}
+                                </div>
+                            )
+                        })}
+                    </div>
+                )
+            }}/>
         )
-    }}/>
+    }
+  
+```
+
+
+### Usage with [Advanced Dynamic Message Content (ADMC)](http://doc.evergage.com/display/EKB/Use+Advanced+Dynamic+Message+Content)
+
+Since ADMC doesn't deliver the items with the Evergage campaign response, you have to use the rendered markup from Evergage. 
+
+The EvergageRenderedContent component lets you show this content where you'd like in your application.
+
+```javascript
+
+    import { EvergageRenderedExperience } from "react-evergage-personalize";
+
+    export const PersonalizedContent = () => {
+        return (
+            <EvergageRenderedExperience campaign="recently-viewed-items" />
+        )
+    }
 ```
 
 
