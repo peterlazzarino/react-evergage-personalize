@@ -10,6 +10,7 @@ declare var Evergage: any;
 export interface IPersonalizationData {
     keys: any[];
     items: any[];
+    markup: string;
 }
 
 export interface IEvergagePersonalizeProps {
@@ -45,6 +46,7 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
         const childProps = {
             keys: personalizationData.keys,
             items: personalizationData.items,
+            markup: personalizationData.markup,
         };
         return renderFn
             ? renderFn(childProps)
@@ -56,6 +58,7 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
                 return {
                     items: [].concat.apply([], messages.map((x) => x["promotedItems"])),
                     keys: [].concat.apply([], messages.map((x) => x["promotedItemKeys"])),
+                    markup: messages[0].htmlContent
                 };
         }
     }

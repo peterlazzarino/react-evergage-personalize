@@ -57,17 +57,24 @@ Set up your campaign in evergage with message that uses item blocks backed by a 
 
 Since ADMC doesn't deliver the items with the Evergage campaign response, you have to use the rendered markup from Evergage. 
 
-The EvergageRenderedContent component lets you show this content where you'd like in your application.
+The EvergagePersonalize component lets you show this content where you'd like in your application.
+
+### Basic usage - 
 
 ```javascript
 
-    import { EvergageRenderedExperience } from "react-evergage-personalize";
+    import EvergagePersonalize from "react-evergage-personalize";
 
     export const PersonalizedContent = () => {
-        return (
-            <EvergageRenderedExperience campaign="recently-viewed-items" />
+        return (  
+            <EvergagePersonalize campaign="homepage_recommendations" render={({markup}) => {
+                return (
+                    <div dangerouslySetInnerHTML={{ __html: markup }} />
+                )
+            }}/>
         )
     }
+  
 ```
 
 
