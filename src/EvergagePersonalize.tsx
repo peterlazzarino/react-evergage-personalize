@@ -4,6 +4,7 @@ import { PersonalizeTypes } from "./PersonalizeTypes";
 import { subscribeToCampaign } from "evergage-datalayer";
 
 const canUseDOM = typeof window !== "undefined";
+const evergageReady = typeof Evergage !== "undefined";
 
 declare var Evergage: any;
 
@@ -32,10 +33,9 @@ export default class EvergagePersonalize extends React.Component<IEvergagePerson
         };
     }
     public componentWillMount () {
-        if(!canUseDOM || !Evergage) {
-            return;
+        if(canUseDOM && evergageReady) {
+            subscribeToCampaign(this.campaignListener, this.props.campaign);
         }
-        subscribeToCampaign(this.campaignListener, this.props.campaign);
     }
     public render () {
         const { render: renderFn, children: child } = this.props;
