@@ -1,6 +1,6 @@
 {
   "name": "react-evergage-personalize",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "React component that gives the ability to leverage Evergage recommendations on a campaign level in react. This allows you to build custom recommendation components outside of evergage.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/peterlazzarino/react-evergage-personalize#readme",
   "dependencies": {
-    "evergage-datalayer": "^2.0.2",
+    "evergage-datalayer": "2.0.3",
     "prop-types": "15.6.0",
     "react": "16.0.0"
   },
